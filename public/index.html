@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Docker CI/CD Demo</title>
+</head>
+<body>
+  <h2>Docker + CI/CD Showcase</h2>
+
+  <button onclick="callBackend()">Click Me</button>
+
+  <p id="response"></p>
+
+  <script>
+    function callBackend() {
+      fetch("/api/click")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("response").innerText = data.message;
+        });
+    }
+  </script>
+</body>
+</html>
+
