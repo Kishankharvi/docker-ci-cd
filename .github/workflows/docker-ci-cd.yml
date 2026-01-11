@@ -34,15 +34,4 @@ jobs:
       - name: Stop test container
         run: docker stop test-app
 
-      # 6. Deploy to server via SSH (CD)
-      - name: Deploy to production server
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            docker stop app || true
-            docker rm app || true
-            docker pull docker-cicd-demo || true
-            docker run -d -p 3000:3000 --name app docker-cicd-demo
+      
